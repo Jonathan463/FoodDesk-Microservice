@@ -38,7 +38,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse getProductById(int id) {
-        return null;
+        Product product = productRepository.findById(id).get();
+        ProductResponse response = new ProductResponse();
+        response.setSize(product.getSize());
+        response.setName(product.getName());
+        response.setPrice(product.getPrice());
+        response.setDateCreated(product.getDateCreated());
+        response.setLastUpdatedDate(product.getDateUpdated());
+        return response;
     }
 
     @Override
